@@ -1,0 +1,67 @@
+drupal:
+  root: "web"
+  base_url: ${env.DRUPAL_BASE_URL}
+  site:
+    profile: "standard"
+    name: "Clean Drupal website"
+    generate_db_url: false
+  account:
+    name: ${env.DRUPAL_ACCOUNT_USERNAME}
+    password: ${env.DRUPAL_ACCOUNT_PASSWORD}
+
+environment:
+  settings:
+    update_free_access: TRUE
+#    http_client_config:
+#      proxy:
+#        http: "http://username:password@host:port"
+#        https: "http://username:password@host:port"
+    container_yamls:
+      - './sites/default/services.yml'
+      - './sites/development.services.yml'
+    cache:
+      default:
+        'cache.backend.null'
+      bins:
+        page:
+          'cache.backend.null'
+        dynamic_page_cache:
+          'cache.backend.null'
+        render:
+          'cache.backend.null'
+  config:
+    "system.logging":
+      error_level: 'verbose'
+    "system.performance":
+      css:
+        preprocess:
+          FALSE
+      js:
+        preprocess:
+          FALSE
+    "file.settings":
+      make_unused_managed_files_temporary: TRUE
+    "views.settings":
+      ui:
+        show:
+          always_live_preview: FALSE
+          additional_queries: TRUE
+          sql_query:
+            enabled: TRUE
+            where: above
+    devel:
+      skip_translations: true
+    locale.settings:
+      translation:
+        use_source: "local"
+
+toolkit:
+  project_id: 'clean'
+  clone:
+    asda_url: ''
+  build:
+    dev:
+      commands:
+      - { task: "symlink", from: "../../lib/modules", to: "${drupal.root}/modules/custom" }
+      - { task: "symlink", from: "../../lib/themes", to: "${drupal.root}/themes/custom" }
+      - { task: "symlink", from: "../../lib/profiles", to: "${drupal.root}/profiles/custom" }

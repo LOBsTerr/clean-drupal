@@ -1,0 +1,78 @@
+version: '2'
+services:
+  web:
+    image: fpfis/httpd-php-dev:7.4
+    working_dir: ${PWD}
+    ports:
+      - 80:80
+    volumes:
+      - ${PWD}:${PWD} # Non Mac users.
+      - ${PWD}/dev/mhsendmail:/usr/local/bin/mhsendmail
+      - ${PWD}/dev/mailhog.ini:/etc/php/7.4/cli/conf.d/mailhog.ini
+      - ${PWD}/dev/mailhog.ini:/etc/php/7.4/fpm/conf.d/mailhog.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/7.4/cli/conf.d/20-xdebug.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/7.4/fpm/conf.d/20-xdebug.ini
+      # - nfsmount:/var/www/html # Mac Users with the nfsmount volume.
+    environment:
+      # ASDA CREDENTIALS
+      # By leaving these variables empty Docker Compose will set them to their host values.
+      ASDA_USER:
+      ASDA_PASSWORD:
+      DOCUMENT_ROOT: ${PWD}/web
+      HTTP_PORT: 80
+      # XDEBUG CONFIGURATION
+      XDEBUG_CONFIG: "mode=debug client_host=172.17.0.1 remote_port=9003 idekey=PHPSTORM start_with_request=yes"
+      DORIS_API_KEY:
+      MTEC_USERNAME:
+      MTEC_PASSWORD:
+      # PHP_IDE_CONFIG: "serverName=Docker"
+      # For Xdebug setup, run this command in the terminal:
+      # For Mac users: sudo ifconfig en0 alias 172.17.0.1 255.255.255.0
+      # For Linux users: sudo ip addr add 172.17.0.1/32 dev lo label lo:1
+    env_file:
+      - .env
+
+  mysql:
+    image: percona/percona-server:5.7
+    command: --max_allowed_packet=1073741824
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  sparql:
+    image: openeuropa/triple-store-dev
+    environment:
+      - SPARQL_UPDATE=true
+      - DBA_PASSWORD=dba
+    ports:
+      - "8890:8890"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+  # Spawn a Selenium server which also includes a VNC server on localhost:5900 (the password is "secret")
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141.59
+    environment:
+      - DISPLAY=:99
+      - SE_OPTS=-debug
+    ports:
+      - 5900:5900
+    expose:
+      - 4444
+
+#### Mac users: uncomment the "volumes" key to enable the NFS file sharing. You can find more information about Docker for Mac here: https://github.com/openeuropa/openeuropa/blob/master/docs/starting/tooling.md#using-docker-on-macos
+
+#volumes:
+#  nfsmount:
+#    driver: local
+#    driver_opts:
+#      type: nfs
+#      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+#      device: ":${PWD}/"
+
+#### End Mac users.

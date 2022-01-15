@@ -1,0 +1,84 @@
+{
+    "name": "lobsterr/clean",
+    "description": "Clean Drupal instance",
+    "type": "project",
+    "license": "EUPL-1.2",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "composer/installers": "^1.5",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/core-composer-scaffold": "^9.3",
+        "drupal/admin_toolbar": "^2.4",
+        "drupal/core": "^9.3",
+        "drush/drush": "^10.0"
+    },
+    "require-dev": {
+        "drupal/console": "~1.0",
+        "ec-europa/toolkit": "^8.4"
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "drupal/core"
+            ],
+            "locations": {
+                "web-root": "./web"
+            },
+            "file-mapping": {
+                "[web-root]/robots.txt": false
+            },
+            "overwrite": true
+        },
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "patches": {
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/console-extend-plugin": true,
+            "phpro/grumphp": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/LOBsTerr/newsroom_connector.git"
+        }
+    ],
+    "conflict": {
+        "drupal/drupal": "*"
+    }
+}
