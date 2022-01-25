@@ -37,16 +37,10 @@ services:
     command: --max_allowed_packet=1073741824
     ports:
       - "3306:3306"
+    volumes:
+      - ./data/db/mysql:/var/lib/mysql
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-
-  sparql:
-    image: openeuropa/triple-store-dev
-    environment:
-      - SPARQL_UPDATE=true
-      - DBA_PASSWORD=dba
-    ports:
-      - "8890:8890"
 
   mailhog:
     image: mailhog/mailhog
@@ -54,16 +48,18 @@ services:
       - 1025:1025
       - 8025:8025
 
-  # Spawn a Selenium server which also includes a VNC server on localhost:5900 (the password is "secret")
-  selenium:
-    image: selenium/standalone-chrome-debug:3.141.59
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
     environment:
-      - DISPLAY=:99
-      - SE_OPTS=-debug
+      PMA_HOST: $DRUPAL_DATABASE_HOST
+      PMA_USER: $DRUPAL_DATABASE_USERNAME
+      PMA_PASSWORD: $DRUPAL_DATABASE_PASSWORD
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 10000
     ports:
-      - 5900:5900
-    expose:
-      - 4444
+      - 8080:80
+    links:
+      - mysql
 
 #### Mac users: uncomment the "volumes" key to enable the NFS file sharing. You can find more information about Docker for Mac here: https://github.com/openeuropa/openeuropa/blob/master/docs/starting/tooling.md#using-docker-on-macos
 
