@@ -62,37 +62,13 @@ commands:
     cmd: |
       ahoy runphp bash
 
-  install-clean:
-    usage: Install site.
-    cmd: |
-      ahoy composer install
-      ahoy runner toolkit:build-dev
-      ahoy runner toolkit:install-clean
-
   install:
     usage: Install site.
     cmd: |
       ahoy composer install
       ahoy runner toolkit:build-dev
       ahoy runner toolkit:install-clean
-      ahoy runner futurium:setup-extra
-      ahoy theme-build
-      ahoy drush en stage_file_proxy -y
-      ahoy drush pmu fut_footer oe_corporate_blocks -y
-      ahoy drush en fut_footer oe_corporate_blocks -y
-
-  stage-file-proxy:
-    usage: config Stage File Proxy origin
-    cmd: |
-      ahoy composer require drupal/stage_file_proxy
-      ahoy drush en stage_file_proxy -y
-      ahoy drush config-set stage_file_proxy.settings origin @0
-
-  install-devel-modules:
-    usage: Install devel modules.
-    cmd: |
-      ahoy drush en devel devel_php -y
-      ahoy drush config:set devel.settings devel_dumper kint -y
+      ahoy drush en admin_toolbar
 
   runcmd:
     usage: Run a command in a ephemeral php container.
