@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "drupal/console": "~1.0",
-        "ec-europa/toolkit": "^8.4"
+        "ec-europa/toolkit": "^8.6"
     },
     "extra": {
         "drupal-scaffold": {
@@ -60,7 +60,8 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "drupal/console-extend-plugin": true,
-            "phpro/grumphp": true
+            "phpro/grumphp": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "scripts": {
