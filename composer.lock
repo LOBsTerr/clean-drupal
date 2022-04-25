@@ -1340,16 +1340,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.3.9",
+            "version": "9.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "86b0c4496e20ae7f945e9a7f0404fafe191ab774"
+                "reference": "ed6af33093f66a9c5048d02f9f2c326ad0e7e90c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/86b0c4496e20ae7f945e9a7f0404fafe191ab774",
-                "reference": "86b0c4496e20ae7f945e9a7f0404fafe191ab774",
+                "url": "https://api.github.com/repos/drupal/core/zipball/ed6af33093f66a9c5048d02f9f2c326ad0e7e90c",
+                "reference": "ed6af33093f66a9c5048d02f9f2c326ad0e7e90c",
                 "shasum": ""
             },
             "require": {
@@ -1591,9 +1591,9 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.3.9"
+                "source": "https://github.com/drupal/core/tree/9.3.12"
             },
-            "time": "2022-03-21T21:21:58+00:00"
+            "time": "2022-04-20T14:25:27+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -7780,16 +7780,16 @@
         },
         {
             "name": "ec-europa/toolkit",
-            "version": "8.6.5",
+            "version": "8.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ec-europa/toolkit.git",
-                "reference": "1979ce590d344733efbd3734c05861c8f1cee2f2"
+                "reference": "bf8c960960f758335351ee4ec45e228f0d6a490f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/1979ce590d344733efbd3734c05861c8f1cee2f2",
-                "reference": "1979ce590d344733efbd3734c05861c8f1cee2f2",
+                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/bf8c960960f758335351ee4ec45e228f0d6a490f",
+                "reference": "bf8c960960f758335351ee4ec45e228f0d6a490f",
                 "shasum": ""
             },
             "require": {
@@ -7831,7 +7831,7 @@
                 "email": "europamanagement@ec.europa.eu",
                 "source": "https://github.com/ec-europa/toolkit"
             },
-            "time": "2022-04-01T15:09:37+00:00"
+            "time": "2022-04-07T07:38:39+00:00"
         },
         {
             "name": "gitonomy/gitlib",
