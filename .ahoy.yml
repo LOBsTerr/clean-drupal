@@ -16,6 +16,7 @@ commands:
       else
         docker-compose up -d
       fi
+
   down:
     usage: Stop the docker containers.
     cmd: |
@@ -69,11 +70,6 @@ commands:
       ahoy runner toolkit:build-dev
       ahoy runner toolkit:install-clean
       ahoy drush en admin_toolbar
-
-  runcmd:
-    usage: Run a command in a ephemeral php container.
-    cmd: |
-      docker run --rm -i -v $(pwd):/var/www/html fpfis/httpd-php-dev:7.3 $@
 
   runphp:
     usage: Run a command inside a running php container.

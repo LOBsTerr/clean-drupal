@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82a673dd215990c9bc09c20aa1f4876b",
+    "content-hash": "8c010fe98d94c2723c27234b01b5f152",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1612,16 +1612,16 @@
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.3.16",
+            "version": "9.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
-                "reference": "a9dd9def8891e1c388719474720b57d3fe929a2f"
+                "reference": "5f37a9e4008b34e3e4f6bb34ce0b3f7e5ec8984f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-composer-scaffold/zipball/a9dd9def8891e1c388719474720b57d3fe929a2f",
-                "reference": "a9dd9def8891e1c388719474720b57d3fe929a2f",
+                "url": "https://api.github.com/repos/drupal/core-composer-scaffold/zipball/5f37a9e4008b34e3e4f6bb34ce0b3f7e5ec8984f",
+                "reference": "5f37a9e4008b34e3e4f6bb34ce0b3f7e5ec8984f",
                 "shasum": ""
             },
             "require": {
@@ -1656,9 +1656,9 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.3.16"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.4.2"
             },
-            "time": "2022-02-24T17:40:56+00:00"
+            "time": "2022-06-19T16:14:23+00:00"
         },
         {
             "name": "drush/drush",
@@ -8046,16 +8046,16 @@
         },
         {
             "name": "ec-europa/toolkit",
-            "version": "8.6.13",
+            "version": "8.6.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ec-europa/toolkit.git",
-                "reference": "f016cb6b6852954ff735f00aac98bcc48eee2af3"
+                "reference": "79e86d0acc6c1b40275db2d9a0944b5b558865d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/f016cb6b6852954ff735f00aac98bcc48eee2af3",
-                "reference": "f016cb6b6852954ff735f00aac98bcc48eee2af3",
+                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/79e86d0acc6c1b40275db2d9a0944b5b558865d7",
+                "reference": "79e86d0acc6c1b40275db2d9a0944b5b558865d7",
                 "shasum": ""
             },
             "require": {
@@ -8097,7 +8097,7 @@
                 "email": "europamanagement@ec.europa.eu",
                 "source": "https://github.com/ec-europa/toolkit"
             },
-            "time": "2022-06-03T07:24:44+00:00"
+            "time": "2022-06-24T10:00:49+00:00"
         },
         {
             "name": "gitonomy/gitlib",
