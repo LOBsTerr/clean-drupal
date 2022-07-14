@@ -1,17 +1,17 @@
 version: '2'
 services:
   web:
-    image: fpfis/httpd-php-dev:7.4
+    image: fpfis/httpd-php-dev:8.0
     working_dir: ${PWD}
     ports:
       - 80:80
     volumes:
       - ${PWD}:${PWD} # Non Mac users.
       - ${PWD}/dev/mhsendmail:/usr/local/bin/mhsendmail
-      - ${PWD}/dev/mailhog.ini:/etc/php/7.4/cli/conf.d/mailhog.ini
-      - ${PWD}/dev/mailhog.ini:/etc/php/7.4/fpm/conf.d/mailhog.ini
-      - ${PWD}/dev/20-xdebug.ini:/etc/php/7.4/cli/conf.d/20-xdebug.ini
-      - ${PWD}/dev/20-xdebug.ini:/etc/php/7.4/fpm/conf.d/20-xdebug.ini
+      - ${PWD}/dev/mailhog.ini:/etc/php/8.0/cli/conf.d/mailhog.ini
+      - ${PWD}/dev/mailhog.ini:/etc/php/8.0/fpm/conf.d/mailhog.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.0/cli/conf.d/20-xdebug.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.0/fpm/conf.d/20-xdebug.ini
       # - nfsmount:/var/www/html # Mac Users with the nfsmount volume.
     environment:
       # ASDA CREDENTIALS
