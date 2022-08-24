@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a17b474611e4c8c3c73de699bfa94a58",
+    "content-hash": "f08c52f8bfdea7818bf378e918fe8021",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1278,26 +1278,29 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "2.5.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-                "reference": "8.x-2.5"
+                "reference": "3.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-2.5.zip",
-                "reference": "8.x-2.5",
-                "shasum": "c71e58051b8d6818272df96d14cb11407d5e5ceb"
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-3.1.1.zip",
+                "reference": "3.1.1",
+                "shasum": "a66ce69cd7e56f1cc43797dc2a58d6eab367d353"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0"
+                "drupal/core": "^8.8.0 || ^9.0 || ^10.0"
+            },
+            "require-dev": {
+                "drupal/admin_toolbar_tools": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.5",
-                    "datestamp": "1629907119",
+                    "version": "3.1.1",
+                    "datestamp": "1658802262",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7929,16 +7932,16 @@
         },
         {
             "name": "ec-europa/toolkit",
-            "version": "8.6.15",
+            "version": "8.6.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ec-europa/toolkit.git",
-                "reference": "2c474ab6c42d65e3060e79ec4754491822cc6e70"
+                "reference": "9997ce8e51300fa5ac73a3affc0a93d206623904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/2c474ab6c42d65e3060e79ec4754491822cc6e70",
-                "reference": "2c474ab6c42d65e3060e79ec4754491822cc6e70",
+                "url": "https://api.github.com/repos/ec-europa/toolkit/zipball/9997ce8e51300fa5ac73a3affc0a93d206623904",
+                "reference": "9997ce8e51300fa5ac73a3affc0a93d206623904",
                 "shasum": ""
             },
             "require": {
@@ -7981,7 +7984,7 @@
                 "email": "europamanagement@ec.europa.eu",
                 "source": "https://github.com/ec-europa/toolkit"
             },
-            "time": "2022-07-07T16:55:37+00:00"
+            "time": "2022-08-24T12:31:13+00:00"
         },
         {
             "name": "gitonomy/gitlib",
