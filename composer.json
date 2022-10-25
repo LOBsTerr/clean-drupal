@@ -12,7 +12,7 @@
         "drupal/admin_toolbar": "^3.0",
         "drupal/core": "^9.4",
         "drupal/core-composer-scaffold": "^9.4",
-        "drush/drush": "^10.0"
+        "drush/drush": "^11"
     },
     "require-dev": {
         "drupal/console": "~1.0",
