@@ -10,9 +10,11 @@
         "composer/installers": "^1.5",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.4",
-        "drupal/core": "^10.1",
-        "drupal/core-composer-scaffold": "^10.0",
-        "drush/drush": "^11.0"
+        "drupal/core": "^10.3",
+        "drupal/core-composer-scaffold": "^10.3",
+        "drupal/oembed_providers": "^2.1",
+        "drupal/paragraphs": "^1.16",
+        "drush/drush": "^12.0"
     },
     "require-dev": {
         "ec-europa/toolkit": "^10.0"
@@ -50,6 +52,14 @@
             "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ]
+        },
+        "artifacts": {
+            "openeuropa/oe_theme": {
+                "dist": {
+                    "url": "https://github.com/{name}/releases/download/{pretty-version}/{project-name}-{pretty-version}.zip",
+                    "type": "zip"
+                }
+            }
         }
     },
     "config": {
@@ -61,7 +71,9 @@
             "drupal/console-extend-plugin": true,
             "phpro/grumphp": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "openeuropa/composer-artifacts": true,
+            "ec-europa/toolkit-composer-plugin": true
         }
     },
     "scripts": {
