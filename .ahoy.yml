@@ -80,11 +80,6 @@ commands:
         docker-compose exec web $@
       fi
 
-  mode:
-    usage: Change site mode. Use dev or prod as argument.
-    cmd: |
-      ahoy drupal site:mode $1
-
   cr:
     usage: Runs drush cache rebuild.
     cmd: |
