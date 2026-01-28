@@ -7,20 +7,20 @@ commands:
       if [ ! -d "data/db/mysql" ]; then
         mkdir -p data/db/mysql
       fi
-      if [ -f "docker-compose.override" ] && [ ! -f "docker-compose.override.yml" ]; then
-        cp docker-compose.override docker-compose.override.yml
+      if [ -f "docker compose.override" ] && [ ! -f "docker compose.override.yml" ]; then
+        cp docker compose.override docker compose.override.yml
       fi
-      if [ -f "docker-compose.local.yml" ]; then
-        rm -rf docker-compose.override.yml
-        docker-compose -f docker-compose.local.yml up -d
+      if [ -f "docker compose.local.yml" ]; then
+        rm -rf docker compose.override.yml
+        docker compose -f docker compose.local.yml up -d
       else
-        docker-compose up -d
+        docker compose up -d
       fi
 
   down:
     usage: Stop the docker containers.
     cmd: |
-      docker-compose down
+      docker compose down
 
   reboot:
     usage: Stop and start the containers.
@@ -30,7 +30,7 @@ commands:
   logs:
     usage: Check the docker container logs.
     cmd: |
-      docker-compose logs -f
+      docker compose logs -f
 
   composer:
     usage: Run a Composer command.
@@ -74,10 +74,10 @@ commands:
   runphp:
     usage: Run a command inside a running php container.
     cmd: |
-      if [ -f "docker-compose.local.yml" ]; then
-        docker-compose -f docker-compose.local.yml exec web $@
+      if [ -f "docker compose.local.yml" ]; then
+        docker compose -f docker compose.local.yml exec web $@
       else
-        docker-compose exec web $@
+        docker compose exec web $@
       fi
 
   cr:

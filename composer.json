@@ -10,8 +10,8 @@
         "composer/installers": "^1.5",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.4",
-        "drupal/core": "^10.3",
-        "drupal/core-composer-scaffold": "^10.3",
+        "drupal/core": "10.6.2",
+        "drupal/core-composer-scaffold": "10.6.2",
         "drupal/oembed_providers": "^2.1",
         "drupal/paragraphs": "^1.16",
         "drush/drush": "^12.0"

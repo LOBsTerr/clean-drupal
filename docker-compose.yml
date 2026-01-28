@@ -1,17 +1,13 @@
-version: '2'
 services:
   web:
-    image: fpfis/httpd-php-dev:8.1
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:8.3-dev
     working_dir: ${PWD}
     ports:
       - 80:80
     volumes:
       - ${PWD}:${PWD} # Non Mac users.
-      - ${PWD}/dev/mhsendmail:/usr/local/bin/mhsendmail
-      - ${PWD}/dev/mailhog.ini:/etc/php/8.1/cli/conf.d/mailhog.ini
-      - ${PWD}/dev/mailhog.ini:/etc/php/8.1/fpm/conf.d/mailhog.ini
-      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.1/cli/conf.d/20-xdebug.ini
-      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.1/fpm/conf.d/20-xdebug.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.3/cli/conf.d/20-xdebug.ini
+      - ${PWD}/dev/20-xdebug.ini:/etc/php/8.3/fpm/conf.d/20-xdebug.ini
       # - nfsmount:/var/www/html # Mac Users with the nfsmount volume.
     environment:
       # ASDA CREDENTIALS
@@ -24,8 +20,8 @@ services:
       XDEBUG_CONFIG: "mode=debug client_host=172.17.0.1 remote_port=9003 idekey=PHPSTORM start_with_request=yes"
       DRUPAL_DATABASE_NAME: "openeuropa"
       DRUPAL_DATABASE_USERNAME: "root"
-      DRUPAL_DATABASE_PASSWORD:
-      DRUPAL_DATABASE_PREFIX:
+      DRUPAL_DATABASE_PASSWORD: ""
+      DRUPAL_DATABASE_PREFIX: ""
       DRUPAL_DATABASE_HOST: "mysql"
       DRUPAL_DATABASE_PORT: "3306"
       DRUPAL_ACCOUNT_USERNAME: "admin"
@@ -38,7 +34,8 @@ services:
       DRUPAL_MAIL_SENDMAIL_PATH: "/scripts/sendmail.pl"
       DRUPAL_MAIL_SENDMAIL_MODE: "t -i"
       SMTP_PORT: "1025"
-      SMTP_SERVER: "mailhog"
+      SMTP_SERVER: "mailpit"
+
       # PHP_IDE_CONFIG: "serverName=Docker"
       # For Xdebug setup, run this command in the terminal:
       # For Mac users: sudo ifconfig en0 alias 172.17.0.1 255.255.255.0
@@ -54,18 +51,23 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
-  mailhog:
-    image: mailhog/mailhog
+  mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
     ports:
-      - 1025:1025
       - 8025:8025
+      - 1025:1025
+    environment:
+      MP_MAX_MESSAGES: 5000
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: $DRUPAL_DATABASE_HOST
-      PMA_USER: $DRUPAL_DATABASE_USERNAME
-      PMA_PASSWORD: $DRUPAL_DATABASE_PASSWORD
+      PMA_HOST: "mysql"
+      PMA_USER: "root"
+      PMA_PASSWORD: ""
       PHP_UPLOAD_MAX_FILESIZE: 1G
       PHP_MAX_INPUT_VARS: 10000
     ports:
@@ -73,14 +75,3 @@ services:
     links:
       - mysql
 
-#### Mac users: uncomment the "volumes" key to enable the NFS file sharing. You can find more information about Docker for Mac here: https://github.com/openeuropa/openeuropa/blob/master/docs/starting/tooling.md#using-docker-on-macos
-
-#volumes:
-#  nfsmount:
-#    driver: local
-#    driver_opts:
-#      type: nfs
-#      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
-#      device: ":${PWD}/"
-
-#### End Mac users.
