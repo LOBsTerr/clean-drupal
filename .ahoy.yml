@@ -84,3 +84,17 @@ commands:
     usage: Runs drush cache rebuild.
     cmd: |
       ahoy drush cr
+
+  unit-tests:
+    usage:
+    cmd: |
+      if [ ! -d "web/sites/simpletest/browser_output" ]; then
+        sudo mkdir -p web/sites/simpletest/browser_output
+        sudo chmod -R 777 web/sites/simpletest/browser_output
+      fi
+      ahoy runphp vendor/bin/phpunit -c "$(pwd)/phpunit.xml" $1
+
+  verbose:
+    usage: Error level verbose.
+    cmd: |
+      ahoy drush config:set system.logging error_level verbose -y
